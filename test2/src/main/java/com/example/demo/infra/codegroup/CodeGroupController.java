@@ -24,9 +24,17 @@ public class CodeGroupController {
 //		for(CodeGroupDto a : list) {
 //			System.out.println(a.getName());
 //		}
-			
 		
 		return "codeGroupXdmList";
 	}
 	
+	@RequestMapping(value = "/codeGroupView")
+	public String codeGroupView(CodeGroupDto dto) throws Exception {
+		
+		System.out.println("dto.getSeq() : " + dto.getSeq());
+		System.out.println("dto.getName() : " + dto.getName());
+		System.out.println("dto.getDelNy() : " + dto.getDelNy());
+		
+		return "codeGroupView";
+	}
 }

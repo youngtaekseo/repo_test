@@ -27,7 +27,10 @@
             <td th:unless="${list.delNy eq 0}">Y</td>
             
             <td th:text="${list.seq}"></td>
-            <td th:text="${list.name}"></td>
+            
+            <!-- <td th:text="${list.name}"></td> -->
+            <td><a th:href="@{/codeGroupView(seq=${list.seq}, name=${list.name})}" th:text="${list.name}"></a></td>
+            
             <td th:text="${list.xcodeCount}"></td>
             <td th:text="${#dates.format(list.regDateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
         </tr>

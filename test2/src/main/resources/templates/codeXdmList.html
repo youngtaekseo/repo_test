@@ -32,8 +32,9 @@
     		<td th:if="${list.delNy eq 0}">N</td>
     		<td th:unless="${list.delNy eq 0}">Y</td>
     		
-    		<td th:text="${list.seq}"></td>
-    		<td th:text="${list.name}"></td>    		
+    		<td th:text="${list.seq}"></td>    		
+    		<td th:text="${list.name}"></td>
+    		    		
     		<td th:text="${#dates.format(list.modDateTime, 'yyyy-MM-dd HH:mm:ss')}"></td>
     	</tr> 
     </table>
