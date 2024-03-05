@@ -29,12 +29,57 @@ public class CodeGroupController {
 	}
 	
 	@RequestMapping(value = "/codeGroupView")
-	public String codeGroupView(CodeGroupDto dto) throws Exception {
+	public String codeGroupView(CodeGroupDto dto, Model model) throws Exception {
 		
-		System.out.println("dto.getSeq() : " + dto.getSeq());
-		System.out.println("dto.getName() : " + dto.getName());
-		System.out.println("dto.getDelNy() : " + dto.getDelNy());
+//		System.out.println("dto.getSeq() : " + dto.getSeq());
+		
+		model.addAttribute("item", service.selectOne(dto));
 		
 		return "codeGroupView";
 	}
+	
+	@RequestMapping(value = "/codeGroupModify")
+	public String codeGroupModify(CodeGroupDto dto, Model model) throws Exception {
+		
+//		System.out.println("dto.getSeq() : " + dto.getSeq());
+		
+		model.addAttribute("item", service.selectOne(dto));
+		
+		return "codeGroupModify";
+	}	
+	
+	@RequestMapping(value = "/codeGroupCreate")
+	public String codeGroupCreate() throws Exception {		
+		return "codeGroupCreate";
+	}	
+	
+	@RequestMapping(value = "/codeGroupInsert")
+	public String codeGroupInsert(CodeGroupDto dto) throws Exception {
+		service.insert(dto);
+		return "redirect:/codeGroupXdmList";
+	}	
+	
+	@RequestMapping(value = "/codeGroupUpdate")
+	public String codeGroupUpdate(CodeGroupDto dto) throws Exception {
+		service.update(dto);
+		return "redirect:/codeGroupXdmList";
+	}
+	
+	@RequestMapping(value = "/codeGroupDelete")
+	public String codeGroupDelete(CodeGroupDto dto) throws Exception {
+		service.delete(dto);
+		return "redirect:/codeGroupXdmList";
+	}
+	
+	@RequestMapping(value = "/codeGroupUpDelete")
+	public String codeGroupUpDelete(CodeGroupDto dto) throws Exception {
+		service.upDelete(dto);
+		return "redirect:/codeGroupXdmList";
+	}	
+	
+	@RequestMapping(value = "/codeGroupUpInsert")
+	public String codeGroupUpInsert(CodeGroupDto dto) throws Exception {
+		service.upInsert(dto);
+		return "redirect:/codeGroupXdmList";
+	}		
 }

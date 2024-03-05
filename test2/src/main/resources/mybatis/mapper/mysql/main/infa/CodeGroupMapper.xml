@@ -20,5 +20,70 @@
          WHERE 1=1
          ORDER BY a.seq DESC
     </select>
+    
+    <select id="selectOne" resultMap="resultMapObj">
+        SELECT a.seq
+			 , a.name
+			 , a.regDateTime
+			 , a.modDateTime
+			 , a.delNy
+			 , (SELECT COUNT(*) 
+			      FROM commoncode aa 
+			     WHERE aa.commonGroup_seq = a.seq 
+			       AND aa.delNy = 0
+			   ) xcodeCount
+          FROM commongroup a
+         WHERE 1=1
+           AND a.seq = #{seq}
+         ORDER BY a.seq DESC
+    </select>    
+    
+    <insert id="insert">
+    	INSERT INTO commongroup
+    		( name
+    		, regDateTime
+    		, modDateTime
+    		, delNy
+    		)
+    	VALUES
+    		(
+    		  #{name}
+    		, now()
+    		, now()
+    		, 0
+    		)
+    		
+<!--     		<selectKey resultType="String" keyProperty="seq" order="AFTER"></selectKey> -->
+    </insert>
+    
+    <update id="update">
+    	UPDATE commongroup
+    	   SET name = #{name}
+    	     , modDateTime = now()
+         WHERE 1=1
+           AND seq = #{seq}    	  
+    </update>
+    
+    <update id="upDelete">
+    	UPDATE commongroup
+    	   SET delNy = 1
+    	     , modDateTime = now()
+         WHERE 1=1
+           AND seq = #{seq}    	  
+    </update>
+    
+    <update id="upInsert">
+    	UPDATE commongroup
+    	   SET delNy = 0
+    	     , modDateTime = now()
+         WHERE 1=1
+           AND seq = #{seq}    	  
+    </update>    
+    
+    <delete id="delete">
+    	DELETE FROM commongroup
+         WHERE 1=1
+           AND seq = #{seq}      
+    </delete>
 	  
 </mapper>

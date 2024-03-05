@@ -13,13 +13,39 @@ public class CodeGroupService {
 	CodeGroupDao dao;
 //	CodeGroupDao dao = new CodeGroupDao();
 	
-//	public List<CodeGroupDto> selectList(){
-//		
+	public List<CodeGroupDto> selectList(){
+		
 //		List<CodeGroupDto> list = dao.selectList();
-//		
 //		return list;
-//	}
+		
+		return dao.selectList();
+	}
 	
-	public List<CodeGroupDto> selectList(){ return dao.selectList();}
+	public CodeGroupDto selectOne(CodeGroupDto dto){
+		
+//		CodeGroupDto codeGroupDto = dao.selectOne(dto);
+//		return codeGroupDto;
+		
+		return dao.selectOne(dto);
+	}
 
+	public int insert(CodeGroupDto dto){
+		return dao.insert(dto);
+	}	
+	
+	public int update(CodeGroupDto dto){
+		return dao.update(dto);
+	}	
+	
+	public int delete(CodeGroupDto dto){
+		return dao.delete(dto);
+	}
+	
+	public int upDelete(CodeGroupDto dto){
+		return dao.upDelete(dto);
+	}
+	
+	public int upInsert(CodeGroupDto dto){
+		return dao.upInsert(dto);
+	}	
 }
